@@ -1,49 +1,199 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arbie's Bakery</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #fff8ed;
+            color: #4b3025;
+        }
+
+        header {
+            background-color: #8b5e3c;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 10px;
+        }
+
+        #hero {
+            background-color: #f3dfc1;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        /* Hero Photo */
+        .hero-image {
+            width: 80%;
+            max-width: 450px;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin: 20px auto;
+            display: block;
+        }
+
+        #hero a {
+            background-color: #8b5e3c;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+        }
+
+        section {
+            padding: 30px;
+            text-align: center;
+        }
+
+        .bake-box {
+            background-color: white;
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin: 10px auto;
+            max-width: 300px;
+        }
+
+        form {
+            max-width: 400px;
+            margin: auto;
+            text-align: left;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #8b5e3c;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        footer {
+            background-color: #8b5e3c;
+            color: white;
+            text-align: center;
+            padding: 15px;
+        }
+
+        .dark {
+            background-color: #2b211c;
+            color: #fff8ed;
+        }
+
+        .dark header,
+        .dark footer {
+            background-color: #1c1511;
+        }
+
+        .dark #hero,
+        .dark #work {
+            background-color: #493629;
+        }
+
+        .dark .bake-box {
+            background-color: #382a22;
+            color: white;
+        }
+
+        .dark input,
+        .dark textarea {
+            background-color: #382a22;
+            color: white;
+        }
+
+        @media (max-width: 600px) {
+            nav a {
+                display: inline-block;
+                margin: 5px;
+            }
+
+            section {
+                padding: 20px;
+            }
+
+            #hero h2 {
+                font-size: 24px;
+            }
+
+            .bake-box {
+                width: auto;
+            }
+
+            .hero-image {
+                width: 100%;
+                height: 200px;
+            }
+        }
+    </style>
 </head>
+
 <body>
 
     <header>
+        <h1>Arbie's Bakery</h1>
+
         <nav>
-            <h1>Arbie's Bakery</h1>
-            <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#work">Our Bakes</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
+            <a href="#about">About</a>
+            <a href="#work">Our Bakes</a>
+            <a href="#contact">Contact</a>
         </nav>
+
+        <button id="darkModeToggle">Dark Mode</button>
     </header>
 
     <main>
         <section id="hero">
-            <h2>Welcome to Arbie's Bakery!</h2>
-            <p>Freshly baked bread, delicious cakes, and sweet pastries.</p>
-            <a href="#work">Explore Our Menu</a>
-        </section>
+    <h2>Welcome to Arbie's Bakery!</h2>
+    <p>Freshly baked bread, delicious cakes, and sweet pastries.</p>
+
+    <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=900"
+         alt="Freshly baked bread"
+         class="hero-image">
+
+    <br><br>
+    <a href="#work">Explore Our Menu</a>
+</section>
 
         <section id="about">
             <h2>About Our Bakery</h2>
             <p>
                 Arbie's Bakery is a local bakery offering fresh bread,
                 delicious cakes, and sweet pastries made with love.
+                We want to bring happiness to every customer through our baked products.
             </p>
         </section>
 
         <section id="work">
             <h2>Our Bakes</h2>
-            <div>
+
+            <div class="bake-box">
                 <h3>Bread</h3>
                 <p>Freshly baked bread for every day.</p>
             </div>
-            <div>
+
+            <div class="bake-box">
                 <h3>Cakes</h3>
-                <p>Sweet cakes for special occasions.</p>
+                <p>Sweet cakes for your every special ocassion.</p>
             </div>
-            <div>
+
+            <div class="bake-box">
                 <h3>Pastries</h3>
                 <p>Delicious pastries for your cravings.</p>
             </div>
@@ -51,24 +201,37 @@
 
         <section id="contact">
             <h2>Contact Arbie's Bakery</h2>
+
             <form action="#">
                 <label for="name">Name</label>
-                <input type="text" id="name" name="name" required>
+                <input type="text" id="name" name="name"
+                    placeholder="Enter your name" required>
 
                 <label for="email">Email</label>
-                <input type="email" id="email" name="email" required>
+                <input type="email" id="email" name="email"
+                    placeholder="Enter your email" required>
 
                 <label for="message">Message</label>
-                <textarea id="message" name="message" rows="5" required></textarea>
+                <textarea id="message" name="message" rows="5"
+                    placeholder="Enter your message" required></textarea>
 
                 <button type="submit">Send Message</button>
             </form>
         </section>
+
     </main>
 
     <footer>
-        <p>&copy; Arbie's Bakery. Baked with love.</p>
+        <p>&copy; 2026 Arbie's Bakery. Baked with love.</p>
     </footer>
+
+    <script>
+        const darkModeToggle = document.querySelector("#darkModeToggle");
+
+        darkModeToggle.addEventListener("click", function () {
+            document.documentElement.classList.toggle("dark");
+        });
+    </script>
 
 </body>
 </html>

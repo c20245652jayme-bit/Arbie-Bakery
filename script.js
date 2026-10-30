@@ -1,6 +1,5 @@
 gsap.registerPlugin(ScrollTrigger);
 
-// ---- B1: DARK MODE TOGGLE ----
 const darkModeToggle = document.querySelector("#darkModeToggle");
 
 darkModeToggle.addEventListener("click", function () {

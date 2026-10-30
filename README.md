@@ -16,10 +16,11 @@ Arbie's Bakery is a simple one-page website for a local bakery that offers fresh
 | Accent | 10% | `##8B5E3C` | Buttons, links, highlights |
 
 ### Visual style
-
+Minamlism(simple and clean design)
 **Style chosen:** (for example: minimalism, glassmorphism, neo-brutalism, bento grid)
 
 **Why I chose it:** one sentence.
+I chose minimalism because it makes my bakery website look clean, simple, and easy for visitors to navigate.
 
 ### Contrast check
 
