@@ -20,8 +20,9 @@
         body {
             margin: 0;
             font-family: Arial, sans-serif;
-            background-color: #fff8ed;
-            color: #4b3025;
+            background-color: #FFF8ED;
+            color: #4B3025;
+            line-height: 1.6;
         }
 
         #progressBar {
@@ -30,19 +31,19 @@
             left: 0;
             width: 0%;
             height: 5px;
-            background-color: #8b5e3c;
+            background-color: #8B5E3C;
             z-index: 1000;
         }
 
         header {
-            background-color: #8b5e3c;
-            color: white;
+            background-color: #8B5E3C;
+            color: #FFFFFF;
             padding: 15px;
             text-align: center;
         }
 
         nav a {
-            color: white;
+            color: #FFFFFF;
             text-decoration: none;
             margin: 10px;
             display: inline-block;
@@ -53,9 +54,55 @@
         }
 
         #hero {
-            background-color: #f3dfc1;
+            background-color: #F3DFC1;
             text-align: center;
             padding: 60px 20px;
+        }
+
+        #hero h2 {
+            font-size: 32px;
+        }
+
+        #hero p {
+            font-size: 18px;
+        }
+
+        #hero a {
+            display: inline-block;
+            background-color: #8B5E3C;
+            color: #FFFFFF;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+
+        #hero a:hover {
+            background-color: #6B452C;
+        }
+
+        
+        section {
+            padding: 30px;
+            text-align: center;
+            scroll-margin-top: 15px;
+        }
+
+      .bake-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .bake-box {
+            background-color: #FFFFFF;
+            border: 1px solid #D9C8B8;
+            padding: 20px;
+            margin: 10px auto;
+            width: 100%;
+            max-width: 300px;
+            border-radius: 10px;
         }
 
         .hero-image {
@@ -66,42 +113,6 @@
             border-radius: 10px;
             margin: 20px auto;
             display: block;
-        }
-
-        #hero a {
-            display: inline-block;
-            background-color: #8b5e3c;
-            color: white;
-            text-decoration: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-        }
-
-        #hero a:hover {
-            background-color: #6b452c;
-        }
-
-        section {
-            padding: 30px;
-            text-align: center;
-        }
-
-        .bake-container {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 20px;
-            max-width: 1100px;
-            margin: auto;
-        }
-
-        .bake-box {
-            background-color: white;
-            border: 1px solid #ddd;
-            padding: 20px;
-            margin: 10px auto;
-            width: 100%;
-            max-width: 300px;
-            border-radius: 10px;
         }
 
         .bake-box .hero-image {
@@ -115,113 +126,115 @@
             text-align: left;
         }
 
-        input, textarea {
+        input,
+        textarea {
             width: 100%;
             padding: 10px;
             margin: 8px 0;
-            box-sizing: border-box;
-            border: 1px solid #ccc;
+            border: 1px solid #D9C8B8;
             border-radius: 5px;
+            font-family: Arial, sans-serif;
+            font-size: 15px;
+        }
+
+        textarea {
+            resize: vertical;
         }
 
         button {
-            background-color: #8b5e3c;
-            color: white;
+            background-color: #8B5E3C;
+            color: #FFFFFF;
             border: none;
             padding: 10px 20px;
             cursor: pointer;
             border-radius: 5px;
             margin: 5px;
+            font-size: 14px;
         }
 
         button:hover {
-            background-color: #6b452c;
+            background-color: #6B452C;
         }
 
+        button:focus-visible,
+        a:focus-visible,
+        input:focus-visible,
+        textarea:focus-visible {
+            outline: 3px solid #C58B5C;
+            outline-offset: 3px;
+        }
+
+      
         footer {
-            background-color: #8b5e3c;
-            color: white;
+            background-color: #8B5E3C;
+            color: #FFFFFF;
             text-align: center;
             padding: 15px;
         }
 
+      
         .dark body {
-            background-color: #e8d5c3;
-            color: #4b3025;
+            background-color: #E8D5C3;
+            color: #4B3025;
         }
 
         .dark header,
         .dark footer {
-            background-color: #9b7258;
-            color: #fff8ed;
+            background-color: #6B452C;
+            color: #FFFFFF;
         }
 
         .dark #hero,
         .dark #about,
         .dark #work,
         .dark #contact {
-            background-color: #d8bda5;
-            color: #4b3025;
+            background-color: #D8BDA5;
+            color: #4B3025;
         }
 
         .dark .bake-box {
-            background-color: #c9a68b;
-            color: #4b3025;
-            border-color: #a77c5d;
+            background-color: #C9A68B;
+            color: #4B3025;
+            border-color: #A77C5D;
         }
 
         .dark input,
         .dark textarea {
-            background-color: #f5e6d8;
-            color: #4b3025;
-            border: 1px solid #a77c5d;
+            background-color: #F5E6D8;
+            color: #4B3025;
+            border: 1px solid #A77C5D;
         }
 
         .dark input::placeholder,
         .dark textarea::placeholder {
-            color: #80614d;
+            color: #6B452C;
         }
 
-        .dark button {
-            background-color: #a8754f;
-            color: white;
-        }
-
+        .dark button,
         .dark #hero a {
-            background-color: #a8754f;
-            color: white;
+            background-color: #6B452C;
+            color: #FFFFFF;
         }
 
         .dark nav a {
-            color: white;
+            color: #FFFFFF;
         }
 
+        
         @media (min-width: 600px) {
             .bake-container {
                 grid-template-columns: repeat(2, 1fr);
             }
         }
 
+       
         @media (min-width: 900px) {
             .bake-container {
                 grid-template-columns: repeat(3, 1fr);
             }
         }
 
-        @media (prefers-reduced-motion: reduce) {
-            html {
-                scroll-behavior: auto;
-            }
-
-            *,
-            *::before,
-            *::after {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-            }
-        }
-
+       
         @media (max-width: 600px) {
             nav a {
                 margin: 5px;
@@ -240,12 +253,29 @@
                 height: 200px;
             }
         }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
     </style>
 </head>
 
 <body>
+
+  
     <div id="progressBar"></div>
 
+  
     <header>
         <h1>Arbie's Bakery</h1>
 
@@ -255,12 +285,15 @@
             <a href="#contact">Contact</a>
         </nav>
 
-        <button id="darkModeToggle">Dark Mode</button>
+        <button id="darkModeToggle" type="button">Dark Mode</button>
     </header>
 
     <main>
+
+        
         <section id="hero">
             <h2>Welcome to Arbie's Bakery!</h2>
+
             <p>Freshly baked bread, delicious cakes, and sweet pastries.</p>
 
             <br><br>
@@ -268,6 +301,7 @@
             <a href="#work">Explore Our Menu</a>
         </section>
 
+       
         <section id="about" class="reveal">
             <h2>About Our Bakery</h2>
 
@@ -278,6 +312,7 @@
             </p>
         </section>
 
+       
         <section id="work" class="reveal">
             <h2>Our Bakes</h2>
 
@@ -285,6 +320,7 @@
 
                 <div class="bake-box">
                     <h3>Bread</h3>
+
                     <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=900"
                          alt="Freshly baked bread"
                          class="hero-image">
@@ -292,6 +328,7 @@
 
                 <div class="bake-box">
                     <h3>Cakes</h3>
+
                     <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=900"
                          alt="Delicious chocolate cake"
                          class="hero-image">
@@ -299,6 +336,7 @@
 
                 <div class="bake-box">
                     <h3>Pastries</h3>
+
                     <img src="https://images.unsplash.com/photo-1509365465985-25d11c17e812?w=900"
                          alt="Freshly baked pastries"
                          class="hero-image">
@@ -306,6 +344,7 @@
 
                 <div class="bake-box">
                     <h3>Freshly Baked Cookies</h3>
+
                     <img src="https://images.unsplash.com/photo-1499636136210-6f4ee915583e?w=900"
                          alt="Freshly baked cookies"
                          class="hero-image">
@@ -313,6 +352,7 @@
 
                 <div class="bake-box">
                     <h3>Sweet Cupcakes</h3>
+
                     <img src="https://images.unsplash.com/photo-1486427944299-d1955d23e34d?w=900"
                          alt="Sweet cupcakes"
                          class="hero-image">
@@ -321,37 +361,48 @@
             </div>
         </section>
 
+        
         <section id="contact" class="reveal">
             <h2>Contact Arbie's Bakery</h2>
 
             <form action="#">
                 <label for="name">Name</label>
+
                 <input type="text" id="name" name="name"
                     placeholder="Enter your name" required>
 
                 <label for="email">Email</label>
+
                 <input type="email" id="email" name="email"
                     placeholder="Enter your email" required>
 
                 <label for="message">Message</label>
+
                 <textarea id="message" name="message" rows="5"
                     placeholder="Enter your message" required></textarea>
 
                 <button type="submit">Send Message</button>
             </form>
         </section>
+
     </main>
 
+    
     <footer>
         <p>&copy; 2026 Arbie's Bakery.</p>
     </footer>
 
+    
     <script>
+
+        
         gsap.registerPlugin(ScrollTrigger);
 
+        
         const darkModeToggle = document.querySelector("#darkModeToggle");
 
         darkModeToggle.addEventListener("click", function () {
+
             document.documentElement.classList.toggle("dark");
 
             if (document.documentElement.classList.contains("dark")) {
@@ -359,12 +410,16 @@
             } else {
                 darkModeToggle.textContent = "Dark Mode";
             }
+
         });
 
+       
         const mm = gsap.matchMedia();
 
+        
         mm.add("(prefers-reduced-motion: no-preference)", function () {
 
+        
             const intro = gsap.timeline({
                 defaults: {
                     duration: 0.7,
@@ -418,9 +473,15 @@
             });
 
         });
+
         mm.add("(prefers-reduced-motion: reduce)", function () {
 
             gsap.set(".reveal", {
+                opacity: 1,
+                y: 0
+            });
+
+            gsap.set("#hero h2, #hero p, #hero a", {
                 opacity: 1,
                 y: 0
             });
@@ -432,5 +493,6 @@
         });
 
     </script>
+
 </body>
 </html>
