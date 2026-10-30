@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,12 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arbie's Bakery</title>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             margin: 0;
             font-family: Arial, sans-serif;
             background-color: #fff8ed;
             color: #4b3025;
+        }
+
+        #progressBar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 5px;
+            background-color: #8b5e3c;
+            z-index: 1000;
         }
 
         header {
@@ -25,6 +45,11 @@
             color: white;
             text-decoration: none;
             margin: 10px;
+            display: inline-block;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
         }
 
         #hero {
@@ -33,7 +58,6 @@
             padding: 60px 20px;
         }
 
-        /* Hero Photo */
         .hero-image {
             width: 80%;
             max-width: 450px;
@@ -45,10 +69,16 @@
         }
 
         #hero a {
+            display: inline-block;
             background-color: #8b5e3c;
             color: white;
             text-decoration: none;
             padding: 10px 20px;
+            border-radius: 5px;
+        }
+
+        #hero a:hover {
+            background-color: #6b452c;
         }
 
         section {
@@ -56,12 +86,27 @@
             text-align: center;
         }
 
+        .bake-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            max-width: 1100px;
+            margin: auto;
+        }
+
         .bake-box {
             background-color: white;
             border: 1px solid #ddd;
             padding: 20px;
             margin: 10px auto;
+            width: 100%;
             max-width: 300px;
+            border-radius: 10px;
+        }
+
+        .bake-box .hero-image {
+            width: 100%;
+            height: 200px;
         }
 
         form {
@@ -75,6 +120,8 @@
             padding: 10px;
             margin: 8px 0;
             box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
         }
 
         button {
@@ -83,6 +130,12 @@
             border: none;
             padding: 10px 20px;
             cursor: pointer;
+            border-radius: 5px;
+            margin: 5px;
+        }
+
+        button:hover {
+            background-color: #6b452c;
         }
 
         footer {
@@ -92,35 +145,85 @@
             padding: 15px;
         }
 
-        .dark {
-            background-color: #2b211c;
-            color: #fff8ed;
+        .dark body {
+            background-color: #e8d5c3;
+            color: #4b3025;
         }
 
         .dark header,
         .dark footer {
-            background-color: #1c1511;
+            background-color: #9b7258;
+            color: #fff8ed;
         }
 
         .dark #hero,
-        .dark #work {
-            background-color: #493629;
+        .dark #about,
+        .dark #work,
+        .dark #contact {
+            background-color: #d8bda5;
+            color: #4b3025;
         }
 
         .dark .bake-box {
-            background-color: #382a22;
-            color: white;
+            background-color: #c9a68b;
+            color: #4b3025;
+            border-color: #a77c5d;
         }
 
         .dark input,
         .dark textarea {
-            background-color: #382a22;
+            background-color: #f5e6d8;
+            color: #4b3025;
+            border: 1px solid #a77c5d;
+        }
+
+        .dark input::placeholder,
+        .dark textarea::placeholder {
+            color: #80614d;
+        }
+
+        .dark button {
+            background-color: #a8754f;
             color: white;
+        }
+
+        .dark #hero a {
+            background-color: #a8754f;
+            color: white;
+        }
+
+        .dark nav a {
+            color: white;
+        }
+
+        @media (min-width: 600px) {
+            .bake-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 900px) {
+            .bake-container {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
         }
 
         @media (max-width: 600px) {
             nav a {
-                display: inline-block;
                 margin: 5px;
             }
 
@@ -132,10 +235,6 @@
                 font-size: 24px;
             }
 
-            .bake-box {
-                width: auto;
-            }
-
             .hero-image {
                 width: 100%;
                 height: 200px;
@@ -145,6 +244,7 @@
 </head>
 
 <body>
+    <div id="progressBar"></div>
 
     <header>
         <h1>Arbie's Bakery</h1>
@@ -160,19 +260,17 @@
 
     <main>
         <section id="hero">
-    <h2>Welcome to Arbie's Bakery!</h2>
-    <p>Freshly baked bread, delicious cakes, and sweet pastries.</p>
+            <h2>Welcome to Arbie's Bakery!</h2>
+            <p>Freshly baked bread, delicious cakes, and sweet pastries.</p>
 
-    <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=900"
-         alt="Freshly baked bread"
-         class="hero-image">
+            <br><br>
 
-    <br><br>
-    <a href="#work">Explore Our Menu</a>
-</section>
+            <a href="#work">Explore Our Menu</a>
+        </section>
 
-        <section id="about">
+        <section id="about" class="reveal">
             <h2>About Our Bakery</h2>
+
             <p>
                 Arbie's Bakery is a local bakery offering fresh bread,
                 delicious cakes, and sweet pastries made with love.
@@ -180,26 +278,50 @@
             </p>
         </section>
 
-        <section id="work">
+        <section id="work" class="reveal">
             <h2>Our Bakes</h2>
 
-            <div class="bake-box">
-                <h3>Bread</h3>
-                <p>Freshly baked bread for every day.</p>
-            </div>
+            <div class="bake-container">
 
-            <div class="bake-box">
-                <h3>Cakes</h3>
-                <p>Sweet cakes for your every special ocassion.</p>
-            </div>
+                <div class="bake-box">
+                    <h3>Bread</h3>
+                    <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=900"
+                         alt="Freshly baked bread"
+                         class="hero-image">
+                </div>
 
-            <div class="bake-box">
-                <h3>Pastries</h3>
-                <p>Delicious pastries for your cravings.</p>
+                <div class="bake-box">
+                    <h3>Cakes</h3>
+                    <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=900"
+                         alt="Delicious chocolate cake"
+                         class="hero-image">
+                </div>
+
+                <div class="bake-box">
+                    <h3>Pastries</h3>
+                    <img src="https://images.unsplash.com/photo-1509365465985-25d11c17e812?w=900"
+                         alt="Freshly baked pastries"
+                         class="hero-image">
+                </div>
+
+                <div class="bake-box">
+                    <h3>Freshly Baked Cookies</h3>
+                    <img src="https://images.unsplash.com/photo-1499636136210-6f4ee915583e?w=900"
+                         alt="Freshly baked cookies"
+                         class="hero-image">
+                </div>
+
+                <div class="bake-box">
+                    <h3>Sweet Cupcakes</h3>
+                    <img src="https://images.unsplash.com/photo-1486427944299-d1955d23e34d?w=900"
+                         alt="Sweet cupcakes"
+                         class="hero-image">
+                </div>
+
             </div>
         </section>
 
-        <section id="contact">
+        <section id="contact" class="reveal">
             <h2>Contact Arbie's Bakery</h2>
 
             <form action="#">
@@ -218,20 +340,97 @@
                 <button type="submit">Send Message</button>
             </form>
         </section>
-
     </main>
 
     <footer>
-        <p>&copy; 2026 Arbie's Bakery. Baked with love.</p>
+        <p>&copy; 2026 Arbie's Bakery.</p>
     </footer>
 
     <script>
+        gsap.registerPlugin(ScrollTrigger);
+
         const darkModeToggle = document.querySelector("#darkModeToggle");
 
         darkModeToggle.addEventListener("click", function () {
             document.documentElement.classList.toggle("dark");
-        });
-    </script>
 
+            if (document.documentElement.classList.contains("dark")) {
+                darkModeToggle.textContent = "Light Mode";
+            } else {
+                darkModeToggle.textContent = "Dark Mode";
+            }
+        });
+
+        const mm = gsap.matchMedia();
+
+        mm.add("(prefers-reduced-motion: no-preference)", function () {
+
+            const intro = gsap.timeline({
+                defaults: {
+                    duration: 0.7,
+                    ease: "power2.out"
+                }
+            });
+
+            intro.from("#hero h2", {
+                y: 50,
+                opacity: 0
+            });
+
+            intro.from("#hero p", {
+                y: 30,
+                opacity: 0,
+                ease: "back.out(1.7)"
+            }, "-=0.4");
+
+            intro.from("#hero a", {
+                y: 20,
+                opacity: 0
+            }, "-=0.3");
+
+            gsap.utils.toArray(".reveal").forEach((section) => {
+
+                gsap.from(section, {
+                    y: 40,
+                    opacity: 0,
+                    duration: 0.8,
+                    ease: "power2.out",
+
+                    scrollTrigger: {
+                        trigger: section,
+                        start: "top 85%",
+                        toggleActions: "play none none reverse"
+                    }
+                });
+
+            });
+
+            gsap.to("#progressBar", {
+                width: "100%",
+                ease: "none",
+
+                scrollTrigger: {
+                    trigger: document.documentElement,
+                    start: "top top",
+                    end: "bottom bottom",
+                    scrub: true
+                }
+            });
+
+        });
+        mm.add("(prefers-reduced-motion: reduce)", function () {
+
+            gsap.set(".reveal", {
+                opacity: 1,
+                y: 0
+            });
+
+            gsap.set("#progressBar", {
+                width: "0%"
+            });
+
+        });
+
+    </script>
 </body>
 </html>

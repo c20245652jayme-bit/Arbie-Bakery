@@ -24,18 +24,18 @@ I chose minimalism because it makes my bakery website look clean, simple, and ea
 
 ### Contrast check
 
-Body text color vs. background color: `#______` on `#______`
-Contrast ratio: ______ : 1 (needs to be at least 4.5 : 1)
-Tool used: ______
+Contrast check
+Body text color vs. background color: #4b3025 on #fff8ed
+Contrast ratio: 11.38 : 1 (needs to be at least 4.5 : 1)
+Tool used: https://webaim.org/resources/contrastchecker/
 
 ## Features
-
-- [ ] Mobile-first responsive layout
-- [ ] Dark mode toggle
-- [ ] Page-load intro animation (GSAP timeline)
-- [ ] Scroll reveals on every section below the hero (ScrollTrigger)
-- [ ] Scroll progress bar (scrub)
-- [ ] Reduced-motion support
+- [x] Mobile-first responsive layout
+- [x] Dark mode toggle
+- [x] Page-load intro animation (GSAP timeline)
+- [x] Scroll reveals on every section below the hero (ScrollTrigger)
+- [x] Scroll progress bar (scrub)
+- [x] Reduced-motion support
 
 ## Built With
 
